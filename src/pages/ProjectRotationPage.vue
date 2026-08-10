@@ -62,9 +62,9 @@ function getRandomProjects() {
     const shuffled = [...projects]
 
     for (let i = shuffled.length - 1; i > 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1))
+        const randomIndex = Math.floor(Math.random() * (i + 1));
 
-        ;[shuffled[i], shuffled[randomIndex]] = [
+        [shuffled[i], shuffled[randomIndex]] = [
             shuffled[randomIndex],
             shuffled[i],
         ]
@@ -75,12 +75,14 @@ function getRandomProjects() {
 
 function rotateProjects() {
     let next
+
     do {
         next = getRandomProjects()
     } while (
         visibleProjects.value.length &&
         next.every(p => visibleProjects.value.some(v => v.id === p.id))
         )
+
     visibleProjects.value = next
 }
 
